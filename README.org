@@ -1,3 +1,4 @@
+[[https://melpa.org/#/casual-info][file:https://melpa.org/packages/casual-info-badge.svg]]
 * Casual Info
 An opinionated [[https://github.com/magit/transient][Transient]]-based porcelain for the Emacs [[https://www.gnu.org/software/emacs/manual/html_node/info/][Info]] reader.
 

@@ -139,7 +139,7 @@
            :description (lambda ()
                     (casual-info-unicode-db-get :fast-forward-or-down))
            :transient t)
-          ("," "Settings" casual-info-settings-tmenu)
+          ("," "Settings›" casual-info-settings-tmenu)
           ("q" "Dismiss" ignore :transient transient--do-exit)])
 
 
