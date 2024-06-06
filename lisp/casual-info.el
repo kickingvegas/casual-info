@@ -151,7 +151,7 @@
     ("G" "Open node in web…" Info-goto-node-web :transient nil)]
 
    [:pad-keys t
-              ("C-M-n" "New frame" casual-info-clone-frame
+              ("C-M-n" "New Info in frame" casual-info-new-info-frame
                :transient nil)
               ("M-n" "Clone buffer" clone-buffer :transient nil)]]
 
@@ -160,10 +160,14 @@
           (casual-info-quit-all)
           ("q" "Quit Info" quit-window)])
 
-(defun casual-info-clone-frame ()
-  "Clone frame."
+(defun casual-info-new-info-frame ()
+  "Create new Info manual instance (buffer) in a new frame.
+
+This command creates a new frame populated by the
+`info-display-manual' command."
   (interactive)
-  (clone-frame nil t))
+  (other-frame-prefix)
+  (call-interactively #'info-display-manual))
 
 (provide 'casual-info)
 ;;; casual-info.el ends here
