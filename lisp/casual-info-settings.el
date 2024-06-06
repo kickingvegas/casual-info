@@ -54,9 +54,10 @@
                     "Prefer subnodes when scrolling")))]
 
   [:class transient-row
+          (casual-info-quit-one)
           ("a" "About" casual-info-about :transient nil)
           ("v" "Version" casual-info-version :transient nil)
-          ("q" "Dismiss" ignore :transient transient--do-exit)])
+          (casual-info-quit-all)])
 
 ;;; Functions
 

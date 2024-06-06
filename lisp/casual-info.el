@@ -140,14 +140,13 @@
                     (casual-info-unicode-db-get :fast-forward-or-down))
            :transient t)
           ("," "Settings›" casual-info-settings-tmenu)
-          ("q" "Dismiss" ignore :transient transient--do-exit)])
-
+          (casual-info-quit-all)
+          ("q" "Quit Info" quit-window)])
 
 (defun casual-info-clone-frame ()
   "Clone frame."
   (interactive)
   (clone-frame nil t))
-
 
 (provide 'casual-info)
 ;;; casual-info.el ends here
