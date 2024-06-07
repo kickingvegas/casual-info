@@ -30,14 +30,16 @@
 
 (defconst casual-info-unicode-db
   '((:fast-forward . '("⏩️" "Next"))
-    (:rewind . '("⏪️" "Previous"))
+    (:rewind . '("⏪️" "Prev"))
     (:fast-forward-or-down . '("⏩️⤵️"  "Next/Down"))
-    (:rewind-or-up . '("⏪️⤴️" "Previous/Up"))
+    (:rewind-or-up . '("⏪️⤴️" "Prev/Up"))
     (:up . '("⏫️" "Up"))
     (:first . '("⏮️" "First"))
     (:last . '("⏭️" "Last"))
-    (:up-arrow . '("↑" "Previous"))
+    (:up-arrow . '("↑" "Prev"))
     (:down-arrow . '("↓" "Next"))
+    (:scroll-up . '("📄↓" "Up"))
+    (:scroll-down . '("📄↑" "Down"))
     (:paragraph . '(" ¶" "Paragraph"))
     (:link . '(" 🔗" "Link")))
   "Unicode symbol DB to use for Info Transient menus.")
@@ -95,6 +97,24 @@ V is either nil or non-nil."
   (if typeset
       (format " %s" buf)
     buf))
+
+;; Transient Navigation
+(transient-define-suffix casual-info-quit-all ()
+  "Dismiss all menus."
+  :transient nil
+  :key "C-q"
+  :description "Dismiss"
+  (interactive)
+  (transient-quit-all))
+
+(transient-define-suffix casual-info-quit-one ()
+  "Go back to previous menu."
+  :transient nil
+  :key "C-g"
+  :description "‹Back"
+  (interactive)
+  (transient-quit-one))
+
 
 (provide 'casual-info-utils)
 ;;; casual-info-utils.el ends here

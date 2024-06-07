@@ -5,7 +5,7 @@
 ;; Author: Charles Choi <kickingvegas@gmail.com>
 ;; URL: https://github.com/kickingvegas/casual-info
 ;; Keywords: tools
-;; Version: 1.0.3
+;; Version: 1.1.0
 ;; Package-Requires: ((emacs "29.1"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -68,7 +68,26 @@
      :transient t)
     ("M-]" "⏩️" Info-history-forward
      :description (lambda () (casual-info-unicode-db-get :fast-forward))
-     :transient t)]]
+     :transient t)]
+
+   ["Scroll"
+    :pad-keys t
+    ("S-SPC" "Scroll Down" Info-scroll-down
+           :if display-graphic-p
+           :description (lambda ()
+                    (casual-info-unicode-db-get :scroll-down))
+           :transient t)
+
+    ("DEL" "Scroll Down" Info-scroll-down
+           :if-not display-graphic-p
+           :description (lambda ()
+                    (casual-info-unicode-db-get :scroll-down))
+           :transient t)
+
+    ("SPC" "Scroll Up" Info-scroll-up
+           :description (lambda ()
+                    (casual-info-unicode-db-get :scroll-up))
+           :transient t)]]
 
   ["Navigation"
    ["Link"
@@ -116,9 +135,12 @@
      :transient nil)]
 
    [""
+    :pad-keys t
     ("^" "⏫️"  Info-up
      :description (lambda () (casual-info-unicode-db-get :up))
-     :transient t)]]
+     :transient t)
+    ("RET" "Open" Info-follow-nearest-node :transient t)
+    ]]
 
   ["Quick"
    [("J" "Jump to bookmark…" bookmark-jump :transient nil)
@@ -129,25 +151,23 @@
     ("G" "Open node in web…" Info-goto-node-web :transient nil)]
 
    [:pad-keys t
-              ("C-M-n" "New frame" casual-info-clone-frame
+              ("C-M-n" "New Info in frame" casual-info-new-info-frame
                :transient nil)
               ("M-n" "Clone buffer" clone-buffer :transient nil)]]
 
   [:class transient-row
-          ("<return>" "Open" Info-follow-nearest-node :transient t)
-          ("<space>" "⏩️⤵️" Info-scroll-up
-           :description (lambda ()
-                    (casual-info-unicode-db-get :fast-forward-or-down))
-           :transient t)
           ("," "Settings›" casual-info-settings-tmenu)
-          ("q" "Dismiss" ignore :transient transient--do-exit)])
+          (casual-info-quit-all)
+          ("q" "Quit Info" quit-window)])
 
+(defun casual-info-new-info-frame ()
+  "Create new Info manual instance (buffer) in a new frame.
 
-(defun casual-info-clone-frame ()
-  "Clone frame."
+This command creates a new frame populated by the
+`info-display-manual' command."
   (interactive)
-  (clone-frame nil t))
-
+  (other-frame-prefix)
+  (call-interactively #'info-display-manual))
 
 (provide 'casual-info)
 ;;; casual-info.el ends here

@@ -43,6 +43,9 @@
     (push (casualt-suffix-test-vector "Û" #'Info-history-back) test-vectors)
     (push (casualt-suffix-test-vector "Ý" #'Info-history-forward) test-vectors)
 
+    (push (casualt-suffix-test-vector " " #'Info-scroll-up) test-vectors)
+    (push (casualt-suffix-test-vector "" #'Info-scroll-down) test-vectors)
+
     (push (casualt-suffix-test-vector "k" #'Info-prev-reference) test-vectors)
     (push (casualt-suffix-test-vector "j" #'Info-next-reference) test-vectors)
 
@@ -66,11 +69,13 @@
     (push (casualt-suffix-test-vector "c" #'Info-copy-current-node-name) test-vectors)
     ;;(push (casualt-suffix-test-vector "G" #'Info-goto-node-web) test-vectors)
 
+    (push (casualt-suffix-test-vector "" #'casual-info-new-info-frame) test-vectors)
     (push (casualt-suffix-test-vector "î" #'clone-buffer) test-vectors)
     ;;(push (casualt-suffix-test-vector "" #'Info-follow-nearest-node) test-vectors)
     ;;(push (casualt-suffix-test-vector " " #'Info-scroll-up) test-vectors)
 
     (push (casualt-suffix-test-vector "," #'casual-info-settings-tmenu) test-vectors)
+    (push (casualt-suffix-test-vector "q" #'quit-window) test-vectors)
 
     (casualt-suffix-testbench-runner test-vectors
                                      #'casual-info-tmenu
