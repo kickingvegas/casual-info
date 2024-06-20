@@ -25,6 +25,7 @@
 ;;; Code:
 (require 'transient)
 (require 'info)
+(require 'casual-lib)
 (require 'casual-info-variables)
 (require 'casual-info-version)
 (require 'casual-info-utils)
@@ -37,27 +38,27 @@
    ("i" "I-search multiple nodes"
     casual-info--customize-info-isearch-search
     :description (lambda ()
-                   (casual-info--checkbox-label
+                   (casual-lib-checkbox-label
                     Info-isearch-search
                     "I-search through multiple nodes")))
    ("u" "Use Unicode Symbols"
-    casual-info--customize-casual-info-use-unicode-symbols
+    casual-lib-customize-casual-lib-use-unicode
     :description (lambda ()
-                   (casual-info--checkbox-label
-                    casual-info-use-unicode-symbols
+                   (casual-lib-checkbox-label
+                    casual-lib-use-unicode
                     "Use Unicode Symbols")))
    ("c" "Prefer subnodes when scrolling"
     casual-info--customize-info-scroll-prefer-subnodes
     :description (lambda ()
-                   (casual-info--checkbox-label
+                   (casual-lib-checkbox-label
                     Info-scroll-prefer-subnodes
                     "Prefer subnodes when scrolling")))]
 
   [:class transient-row
-          (casual-info-quit-one)
+          (casual-lib-quit-one)
           ("a" "About" casual-info-about :transient nil)
           ("v" "Version" casual-info-version :transient nil)
-          (casual-info-quit-all)])
+          (casual-lib-quit-all)])
 
 ;;; Functions
 
@@ -82,14 +83,6 @@ These directories are searched after those in `Info-directory-list'."
 If non-nil, \\<Info-mode-map>\\[Info-scroll-up] in a menu visits subnodes."
   (interactive)
   (customize-variable 'Info-scroll-prefer-subnodes))
-
-(defun casual-info--customize-casual-info-use-unicode-symbols ()
-  "Customize `casual-info-use-unicode-symbols'.
-
-Customize Casual Info to use Unicode symbols in place of strings
-when appropriate."
-  (interactive)
-  (customize-variable 'casual-info-use-unicode-symbols))
 
 (defun casual-info--customize-info-group ()
   "Call the Info customization group.
