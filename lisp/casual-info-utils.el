@@ -26,6 +26,7 @@
 
 (require 'transient)
 (require 'info)
+(require 'casual-lib)
 (require 'casual-info-variables)
 
 (defconst casual-info-unicode-db
@@ -44,23 +45,15 @@
     (:link . '(" 🔗" "Link")))
   "Unicode symbol DB to use for Info Transient menus.")
 
-(defun casual-info-unicode-db-get (key &optional db)
+(defun casual-info-unicode-get (key)
   "Lookup Unicode symbol for KEY in DB.
 
 - KEY symbol used to lookup Unicode symbol in DB.
-- DB alist containing Unicode symbols used by Info Transient menus.
 
-If DB is nil, then `casual-info-unicode-db' is used by default.
-
-If the value of customizable variable `cchoi-use-unicode-symbols'
+If the value of customizable variable `casual-lib-use-unicode'
 is non-nil, then the Unicode symbol is returned, otherwise a
 plain ASCII-range string."
-  (let* ((db (or db casual-info-unicode-db))
-         (unicode casual-info-use-unicode-symbols)
-         (item (alist-get key db)))
-    (if unicode
-        (nth 0 (eval item))
-      (nth 1 (eval item)))))
+  (casual-lib-unicode-db-get key casual-info-unicode-db))
 
 (defun casual-info-browse-backward-paragraph ()
   "Move point backward paragraph such that the first line is highlighted.
@@ -75,46 +68,6 @@ plain ASCII-range string."
   (interactive)
   (forward-paragraph)
   (forward-line))
-
-;;; Labels
-(defun casual-info--variable-to-checkbox (v)
-  "Checkbox string representation of variable V.
-V is either nil or non-nil."
-  (if casual-info-use-unicode-symbols
-      (if v "☑︎" "◻︎")
-    (if v "[x]" "[ ]")))
-
-(defun casual-info--prefix-label (label prefix)
-  "Label constructed with PREFIX and LABEL separated by a space."
-  (format "%s %s" prefix label))
-
-(defun casual-info--checkbox-label (v label)
-  "Checkbox label using variable V and LABEL."
-  (casual-info--prefix-label label (casual-info--variable-to-checkbox v)))
-
-(defun casual-info-format-arrow (buf typeset)
-  "If TYPESET is non-nil, then format BUF string to have space."
-  (if typeset
-      (format " %s" buf)
-    buf))
-
-;; Transient Navigation
-(transient-define-suffix casual-info-quit-all ()
-  "Dismiss all menus."
-  :transient nil
-  :key "C-q"
-  :description "Dismiss"
-  (interactive)
-  (transient-quit-all))
-
-(transient-define-suffix casual-info-quit-one ()
-  "Go back to previous menu."
-  :transient nil
-  :key "C-g"
-  :description "‹Back"
-  (interactive)
-  (transient-quit-one))
-
 
 (provide 'casual-info-utils)
 ;;; casual-info-utils.el ends here

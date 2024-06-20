@@ -26,8 +26,5 @@
 (require 'ert)
 (require 'casual-info-test-utils)
 
-(ert-deftest test-casual-info-use-unicode-symbols ()
-  (should (symbolp 'casual-info-user-unicode-symbol)))
-
 (provide 'test-casual-info-variables)
 ;;; test-casual-info-variables.el ends here
