@@ -1,4 +1,4 @@
-;;; casual-info.el --- A Transient UI for Info -*- lexical-binding: t; -*-
+;;; casual-info.el --- Transient UI for Info -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2024  Charles Choi
 
