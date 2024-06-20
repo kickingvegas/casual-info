@@ -31,7 +31,7 @@
 (ert-deftest test-casual-info-settings-tmenu-bindings ()
   (casualt-setup)
   (let ((test-vectors (list)))
-    (push (casualt-suffix-test-vector "u" #'casual-info--customize-casual-info-use-unicode-symbols) test-vectors)
+    (push (casualt-suffix-test-vector "u" #'casual-lib-customize-casual-lib-use-unicode) test-vectors)
     (push (casualt-suffix-test-vector "a" #'casual-info-about) test-vectors)
     (push (casualt-suffix-test-vector "v" #'casual-info-version) test-vectors)
     (casualt-suffix-testbench-runner test-vectors

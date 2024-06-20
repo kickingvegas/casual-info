@@ -1,12 +1,12 @@
-;;; casual-info.el --- A Transient UI for Info -*- lexical-binding: t; -*-
+;;; casual-info.el --- Transient UI for Info -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2024  Charles Choi
 
 ;; Author: Charles Choi <kickingvegas@gmail.com>
 ;; URL: https://github.com/kickingvegas/casual-info
 ;; Keywords: tools
-;; Version: 1.1.0
-;; Package-Requires: ((emacs "29.1"))
+;; Version: 1.2.0
+;; Package-Requires: ((emacs "29.1") (casual-lib "1.0.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -32,6 +32,7 @@
 ;;; Code:
 (require 'transient)
 (require 'info)
+(require 'casual-lib)
 (require 'casual-info-version)
 (require 'casual-info-variables)
 (require 'casual-info-settings)
@@ -64,10 +65,10 @@
     :pad-keys t
     ("L" "History" Info-history :transient nil)
     ("M-[" "⏪️" Info-history-back
-     :description (lambda () (casual-info-unicode-db-get :rewind))
+     :description (lambda () (casual-info-unicode-get :rewind))
      :transient t)
     ("M-]" "⏩️" Info-history-forward
-     :description (lambda () (casual-info-unicode-db-get :fast-forward))
+     :description (lambda () (casual-info-unicode-get :fast-forward))
      :transient t)]
 
    ["Scroll"
@@ -75,69 +76,69 @@
     ("S-SPC" "Scroll Down" Info-scroll-down
            :if display-graphic-p
            :description (lambda ()
-                    (casual-info-unicode-db-get :scroll-down))
+                    (casual-info-unicode-get :scroll-down))
            :transient t)
 
     ("DEL" "Scroll Down" Info-scroll-down
            :if-not display-graphic-p
            :description (lambda ()
-                    (casual-info-unicode-db-get :scroll-down))
+                    (casual-info-unicode-get :scroll-down))
            :transient t)
 
     ("SPC" "Scroll Up" Info-scroll-up
            :description (lambda ()
-                    (casual-info-unicode-db-get :scroll-up))
+                    (casual-info-unicode-get :scroll-up))
            :transient t)]]
 
   ["Navigation"
    ["Link"
-    :description (lambda () (casual-info-unicode-db-get :link))
+    :description (lambda () (casual-info-unicode-get :link))
     ("k" "Previous" Info-prev-reference
-     :description (lambda () (casual-info-unicode-db-get :up-arrow))
+     :description (lambda () (casual-info-unicode-get :up-arrow))
      :transient t)
     ("j" "Next" Info-next-reference
-     :description (lambda () (casual-info-unicode-db-get :down-arrow))
+     :description (lambda () (casual-info-unicode-get :down-arrow))
      :transient t)]
 
    ["Paragraph"
-    :description (lambda () (casual-info-unicode-db-get :paragraph))
+    :description (lambda () (casual-info-unicode-get :paragraph))
     ("p" "Previous" casual-info-browse-backward-paragraph
-     :description (lambda () (casual-info-unicode-db-get :up-arrow))
+     :description (lambda () (casual-info-unicode-get :up-arrow))
      :transient t)
     ("n" "Next" casual-info-browse-forward-paragraph
-     :description (lambda () (casual-info-unicode-db-get :down-arrow))
+     :description (lambda () (casual-info-unicode-get :down-arrow))
      :transient t)]
 
    ["All Nodes"
     ("[" "⏪️⤴️" Info-backward-node
      :description (lambda ()
-                    (casual-info-unicode-db-get :rewind-or-up))
+                    (casual-info-unicode-get :rewind-or-up))
      :transient t)
     ("]" "⏩️⤵️" Info-forward-node
      :description (lambda ()
-                    (casual-info-unicode-db-get :fast-forward-or-down))
+                    (casual-info-unicode-get :fast-forward-or-down))
      :transient t)]
 
    ["Peer Nodes"
     ("h" "⏪️" Info-prev
-     :description (lambda () (casual-info-unicode-db-get :rewind))
+     :description (lambda () (casual-info-unicode-get :rewind))
      :transient t)
     ("l" "⏩️" Info-next
-     :description (lambda () (casual-info-unicode-db-get :fast-forward))
+     :description (lambda () (casual-info-unicode-get :fast-forward))
      :transient t)]
 
    [""
     ("<" "⏮️" Info-top-node
-     :description (lambda () (casual-info-unicode-db-get :first))
+     :description (lambda () (casual-info-unicode-get :first))
      :transient nil)
     (">" "⏭️" Info-final-node
-     :description (lambda () (casual-info-unicode-db-get :last))
+     :description (lambda () (casual-info-unicode-get :last))
      :transient nil)]
 
    [""
     :pad-keys t
     ("^" "⏫️"  Info-up
-     :description (lambda () (casual-info-unicode-db-get :up))
+     :description (lambda () (casual-info-unicode-get :up))
      :transient t)
     ("RET" "Open" Info-follow-nearest-node :transient t)
     ]]
@@ -157,7 +158,7 @@
 
   [:class transient-row
           ("," "Settings›" casual-info-settings-tmenu)
-          (casual-info-quit-all)
+          (casual-lib-quit-all)
           ("q" "Quit Info" quit-window)])
 
 (defun casual-info-new-info-frame ()

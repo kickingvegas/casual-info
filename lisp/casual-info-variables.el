@@ -24,6 +24,11 @@
 
 ;;; Code:
 (require 'info)
+(require 'casual-lib)
+
+(define-obsolete-variable-alias 'casual-info-use-unicode-symbols
+  'casual-lib-use-unicode
+  "1.2.0")
 
 (defcustom casual-info-use-unicode-symbols nil
   "If non-nil then use Unicode symbols whenever appropriate for labels."
