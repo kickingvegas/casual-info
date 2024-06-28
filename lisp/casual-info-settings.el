@@ -41,18 +41,14 @@
                    (casual-lib-checkbox-label
                     Info-isearch-search
                     "I-search through multiple nodes")))
-   ("u" "Use Unicode Symbols"
-    casual-lib-customize-casual-lib-use-unicode
-    :description (lambda ()
-                   (casual-lib-checkbox-label
-                    casual-lib-use-unicode
-                    "Use Unicode Symbols")))
+   (casual-lib-customize-unicode)
    ("c" "Prefer subnodes when scrolling"
     casual-info--customize-info-scroll-prefer-subnodes
     :description (lambda ()
                    (casual-lib-checkbox-label
                     Info-scroll-prefer-subnodes
-                    "Prefer subnodes when scrolling")))]
+                    "Prefer subnodes when scrolling")))
+   (casual-lib-customize-hide-navigation)]
 
   [:class transient-row
           (casual-lib-quit-one)
@@ -61,7 +57,6 @@
           (casual-lib-quit-all)])
 
 ;;; Functions
-
 (defun casual-info--customize-info-isearch-search ()
   "Customize variable `Info-isearch-search'.
 

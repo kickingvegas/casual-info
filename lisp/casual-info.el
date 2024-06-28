@@ -6,7 +6,7 @@
 ;; URL: https://github.com/kickingvegas/casual-info
 ;; Keywords: tools
 ;; Version: 1.2.0
-;; Package-Requires: ((emacs "29.1") (casual-lib "1.0.0"))
+;; Package-Requires: ((emacs "29.1") (casual-lib "1.1.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -157,8 +157,8 @@
               ("M-n" "Clone buffer" clone-buffer :transient nil)]]
 
   [:class transient-row
+          (casual-lib-quit-one)
           ("," "Settings›" casual-info-settings-tmenu)
-          (casual-lib-quit-all)
           ("q" "Quit Info" quit-window)])
 
 (defun casual-info-new-info-frame ()
