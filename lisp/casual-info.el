@@ -27,7 +27,7 @@
 
 ;; INSTALLATION
 ;; (require 'casual-info)
-;; (define-key info-mode-map (kbd "C-o") #'casual-info-tmenu)
+;; (keymap-set Info-mode-map "C-o" #'casual-info-tmenu)
 
 ;;; Code:
 (require 'transient)
