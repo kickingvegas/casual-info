@@ -111,11 +111,11 @@ To get all current and future Casual porcelains, please install [[https://github
 
 Porcelains currently supported by Casual are listed below:
 
-- [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient porcelain for [[https://github.com/abo-abo/avy][Avy]].
+- [[https://github.com/kickingvegas/casual-ibuffer][Casual IBuffer]] - a Transient porcelain for [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Buffer-Menus.html][IBuffer]].  
 - [[https://github.com/kickingvegas/casual-calc][Casual Calc]] - a Transient porcelain for [[https://www.gnu.org/software/emacs/manual/html_mono/calc.html][Calc]].
 - [[https://github.com/kickingvegas/casual-dired][Casual Dired]] - a Transient porcelain for [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Dired.html][Dired]].
-- [[https://github.com/kickingvegas/casual-info][Casual Info]] - a Transient porcelain for the [[https://www.gnu.org/software/emacs/manual/html_node/info/][Info]] reader.  
 - [[https://github.com/kickingvegas/casual-isearch][Casual I-Search]] - a Transient menu for [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Incremental-Search.html][I-Search]].
+- [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient porcelain for [[https://github.com/abo-abo/avy][Avy]].
 
 Users who prefer finer grained control over package installation can install each porcelain above individually.
   

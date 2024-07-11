@@ -5,7 +5,7 @@
 ;; Author: Charles Choi <kickingvegas@gmail.com>
 ;; URL: https://github.com/kickingvegas/casual-info
 ;; Keywords: tools
-;; Version: 1.3.0
+;; Version: 1.3.1
 ;; Package-Requires: ((emacs "29.1") (casual-lib "1.1.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 
 ;; INSTALLATION
 ;; (require 'casual-info)
-;; (define-key info-mode-map (kbd "C-o") #'casual-info-tmenu)
+;; (keymap-set Info-mode-map "C-o" #'casual-info-tmenu)
 
 ;;; Code:
 (require 'transient)
