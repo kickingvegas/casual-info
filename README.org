@@ -8,7 +8,7 @@ An opinionated [[https://github.com/magit/transient][Transient]]-based user inte
 * Motivation
 The Emacs Info reader (henceforth referred to as Info) has a rich command set that few care to learn. For such users, it is easy to be surprised by the Info command set behavior, particularly around navigation.
 
-Casual Info endeavors to address the above by offering a keyboard-driven user interface (UI) to support discovery and recall. While menus are commonly associated with mouse-driven UI, the inclusion of Transient in Emacs core allows for a menu UI that is keyboard-driven.
+Casual Info endeavors to address the above by offering a keyboard-driven user interface (UI) to support discovery and recognition. While menus are commonly associated with mouse-driven UI, the inclusion of Transient in Emacs core allows for a menu UI that is keyboard-driven.
 
 ** Goals
 - To provide a keyboard-driven menu UI for the Info reader.
