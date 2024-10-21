@@ -23,6 +23,12 @@
 
 ;;; Commentary:
 
+;; NOTICE
+;; This package `casual-info' has been superseded by the package `casual'.
+;; Please update to the `casual' package from either MELPA or MELPA stable. Upon
+;; installation and upgrade of the `casual' package, this package will be
+;; removed.
+
 ;; Casual Info is an opinionated Transient-based porcelain for Emacs Info.
 
 ;; INSTALLATION
@@ -48,6 +54,13 @@
 (require 'casual-info-variables)
 (require 'casual-info-settings)
 (require 'casual-info-utils)
+
+(display-warning
+ :warning
+ (concat
+  "NOTICE: "
+  "The package casual-info has been superseded by the package casual. "
+  "Please upgrade to casual at your earliest convenience."))
 
 ;;; Menus
 ;;;###autoload (autoload 'casual-info-tmenu "casual-info" nil t)
